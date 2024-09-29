@@ -1,0 +1,31 @@
+$def with (name, form, result)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="Totie_O" content="learn-web">
+    <link rel='stylesheet' href='/static/css/main.css' />
+    <title>Web Demo</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome</h1>
+
+        $if name:
+            <em>Hello</em>, <span class="keyword">$name</span>!
+        $else:
+            <em>Hello</em>, world!
+
+        <p>Let's start <a href="https://github.com/Totie-O">learning!</a></p>
+        
+        <hr>
+        
+        <form method="POST">
+            $:form.render()
+        </form>
+
+        <p>Result:<span id="result">$result</span></p>
+    </div>
+</body>
+</html>
