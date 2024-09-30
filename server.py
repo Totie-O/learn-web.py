@@ -2,12 +2,26 @@ import web
 from web import form
 from simpleeval import simple_eval
 
+from star import Star
+import json
+
 render = web.template.render('templates/')
 
 
 urls = (
+    '/star/(.*)', 'star',
     '/', 'index'
 )
+
+class star:
+    def GET(self, q):
+        d = {'status': 'Not found', 'data': None}
+        s = Star(q)
+        if not s.not_found:
+            d['status'] = 'OK'
+            d['data'] = s.__dict__
+
+        return json.dumps(d)
 
 calculator_form = form.Form(
     form.Textbox('expr', description='Expr: '),
