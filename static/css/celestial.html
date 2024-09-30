@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="Totie_O" content="learn-web">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel='stylesheet' href='/static/css/main.css' />
+    <title>Celestial - Know Your Stars</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Know Your Stars</h1>
+
+        <p>
+            Search star: <input type="text" id="qs" /><button id="search">Search</button>
+        </p>
+
+        <p>Result:<span id="result"></span></p>
+
+        <script>
+            $(document).ready(function () {
+                $('#search').on('click', function() {
+                    console.info('Search button clicked, qs=', $('#qs').val())
+                    $.getJSON('/star/' + $('#qs').val(), function (data) {
+                        console.info(data)
+                        if (data.status == 'OK') {
+                            let result = data.data.name + ' in ' + data.data.cons_name + ' (' + data.data.name_cn + ')'
+                            $('#result').text(result)
+                        }
+                        else {
+                            $('#result').text('Not found')
+                        }
+                    })
+                })
+            })
+        </script>
+    </div>
+</body>
+</html>
