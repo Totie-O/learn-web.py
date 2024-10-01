@@ -6,7 +6,10 @@ class Star:
     def __init__(self, name):
         self.name = name
         self.not_found = False
-        if not self._lookup_en() and not self._lookup_cn():
+        if self.name == '':
+            self.not_found = True
+        
+        elif not self._lookup_en() and not self._lookup_cn():
             self.not_found = True
 
     def _lookup(self, colname):

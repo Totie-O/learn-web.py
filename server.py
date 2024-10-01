@@ -7,7 +7,6 @@ import json
 
 render = web.template.render('templates/')
 
-
 urls = (
     '/star/(.*)', 'star',
     '/', 'index'
